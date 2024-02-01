@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(236, 216, 232);
+}
+
+header {
+    height: 60px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(236, 216, 232);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(236, 216, 232);
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenação de Vetor</title>
+</head>
+<body>
+    <label for="valor">Valor:</label>
+    <input type="number" id="valor">
+    <button onclick="adicionarValor()">Adicionar</button>
+    <br><br>
+    <label for="algoritmo">Algoritmo:</label>
+    <select id="algoritmo">
+        <option value="bubble">Buble Sort</option>
+        <option value="selection" selected>Selection Sort</option>
+        <option value="quick">Quick Sort</option>
+    </select>
+    <button onclick="ordenar()">Ordenar</button>
+    <button onclick="misturar()">Misturar</button>
+    <br><br>
+    <ul id="valores"></ul>
+
+    <script src="ordenando.js"></script>
+    <script>
+        const valores = [];
+        const listaValores = document.getElementById('valores');
+        const campoValor = document.getElementById('valor');
+        const selectAlgoritmo = document.getElementById('algoritmo');
+
+        function adicionarValor() {
+            const valor = parseInt(campoValor.value);
+            if (!isNaN(valor)) {
+                valores.push(valor);
+                adicionarItemLista(valor);
+                campoValor.value = '';
+            }
+        }
+
+        function ordenar() {
+            const algoritmo = selectAlgoritmo.value;
+            switch (algoritmo) {
+            case 'bubble':
+            ordenando.bubbleSort(valores);
+            breack;
+            case 'selection':
+            ordenando.selectionSort(valores);
+            breack;
+            case 'quick':  
+            ordenando.quickSort(valores, 0, valores.length - 1); // Passar os índices inicial e final 
+            breack;
+            default:
+            breack;
+          
+            }
+            atualizarLista();
+        }
+
+        function misturar() {
+            ordenando.shuffle(valores, valores.length);
+            atualizarLista();
+        }
+
+
+                function adicionarItemLista(valor) {
+                    const itemLista = document.createElement('li');
+                    itemLista.innerText = valor;
+                    listaValores.innerText = valor;
+                    listaValores.appendChild(itemLista);
+                }
+
+                function atualizarLista() {
+                    listaValores.innerHTML = '';
+                    valores.forEach(adicionarItemLista);
+                }
+             </script>
+</body>
+</html>

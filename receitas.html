@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formatos.css">
+    <title>Catálogo de Receitas</title>
+    <style>
+        .card {
+            width: 250px;
+            border: 1px solid #ccc; 
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+            transition: 0.3s; 
+            border-radius: 20px; 
+        }
+        .card-title {
+        text-align: center;
+         }
+
+        .card-text {
+            font-size: 1em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+            border-top-left-radius: 10px; 
+            border-top-right-radius: 10px;
+        }
+
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2px;
+        }
+
+        .preparo {
+        margin-left: 20px;
+        margin-right: 10px;
+        }
+
+        #pnlCatalogo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px; 
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body onload="preencheCatalogo()">
+    <div class="container-fluid bg-warning">
+        <div id="pnlCatalogo"></div>
+    </div>
+
+<script>
+        const receitas = [
+            {
+                titulo: 'Arroz de Forno',
+                imagem: 'imagens/arroz.png',
+                ingredientes: [
+                    '1 colher (sopa) de óleo',
+                    '1 xícara (chá) de arroz lavado e escorrido',
+                    '2 xícaras (chá) de água fervente',
+                    '1 stick de MAGGI® Meu Segredo® 7 Vegetais',
+                    '2 xícaras (chá) de presunto em cubos pequenos (cerca de 200 g)',
+                    '2 xícaras (chá) de queijo mozarela ralado (cerca de 200 g)',
+                    'meia lata de ervilha em conserva escorrida',
+                    '1 cenoura cozida em cubos pequenos',
+                    '1 colher (sopa) de salsa picada',
+                    '2 colheres (sopa) de queijo parmesão ralado',
+                ],
+                preparo: 'Em uma panela, aqueça o óleo e refogue o arroz até que ele fique brilhante. Junte a água fervente e o MAGGI Meu Segredo 7 Vegetais e misture até dissolvê-lo. Cozinhe em fogo baixo, com a panela semitampada, por cerca de 15 minutos ou até a água secar. Desligue o fogo e deixe a panela tampada por cerca de 5 minutos para que o arroz termine o cozimento em seu próprio vapor. Em um recipiente refratário, misture o presunto, o queijo mozarela, a ervilha, a cenoura, a salsa e o arroz cozido. Polvilhe com queijo parmesão ralado e leve ao forno médio (180°C), preaquecido, por cerca de 30 minutos. Sirva.'
+            },
+            {
+                titulo: 'Macarrão de panela de pressão',
+                imagem: 'imagens/macarrão.png',
+                ingredientes: [
+                    '1 fio de azeite',
+                    '4 dentes de alho picado',
+                    '100 g de presunto picados',
+                    '1 lata de molho de tomate',
+                    '600 ml de água quente',
+                    '1 pacote de macarrão parafuso',
+                    'sal a gosto',
+                    '1 cebola picada',
+                    '1 lata de milho',
+                    '160 g de azeitona',
+                    '1 caixa de creme de leite',
+                    '2 folhas de louro',
+                    '100 g de queijo mussarela picado',
+                    'pimenta-do-reino a gosto',
+                ],
+                preparo: 'Em uma panela de pressão, aqueça 1 fio de azeite e refogue a cebola e o alho picado. Adicione o milho, o presunto, a azeitona, o molho de tomate, o creme de leite e a água quente. Mexa bem. Adicione as folhas de louro, o macarrão e o queijo. Tempere com sal e pimenta-do-reino a gosto. Feche a panela e deixe na pressão por 10 minutos. Finalize com queijo parmesão e decore com salsinha.'
+            },
+            {
+                titulo: 'Torta de Frango',
+                imagem: 'imagens/torta.png',
+                ingredientes: [
+                    '2 xícaras (chá) de farinha de trigo',
+                    '100g de manteiga gelada',
+                    '1 colher (chá) de fermento em pó',
+                    '1 ovo',
+                    '1 colher (chá) de sal',
+                    '4 colheres (sopa) de água gelada',
+                    '2 colheres (sopa) de óleo',
+                    '1 cebola picada',
+                    '2 dentes de alho picados',
+                    '2 xícaras (chá) de frango cozido e desfiado',
+                    '1 lata de milho verde escorrido',
+                    '1 lata de ervilha escorrida',
+                    '1/2 xícara (chá) de azeitonas picadas',
+                    '1 xícara (chá) de requeijão cremoso',
+                    'Sal e pimenta-do-reino a gosto'
+                ],
+                preparo: 'Em uma tigela, misture a farinha, a manteiga, o fermento, o ovo, o sal e a água até formar uma massa homogênea. Embrulhe em filme plástico e leve à geladeira por 30 minutos. Em uma panela, aqueça o óleo e refogue a cebola e o alho até dourar. Adicione o frango, o milho, a ervilha, a azeitona, o requeijão, sal, pimenta e cozinhe por 5 minutos. Abra a massa com um rolo e forre o fundo e as laterais de uma fôrma de aro removível de 22cm de diâmetro. Espalhe o recheio e leve ao forno médio (180°C), preaquecido, por 35 minutos ou até dourar. Desenforme e sirva.'
+            }
+        ];
+
+        function getListaIngredientes(ingredientes) {
+            const listaItems = ingredientes.map(ingrediente => `<li>${ingrediente}</li>`);
+
+            const listaHTML = listaItems.reduce((accumulator, item) => {
+                return accumulator + item;
+            }, "<ul>");
+
+            return listaHTML + "</ul>";
+        }
+
+        function getCard(receita) {
+    return `
+        <div class="card" style="width: 250px;">
+            <img src="${receita.imagem}" alt="${receita.titulo}" class="card-img-top">
+            <div class="card-body">
+                <h2 class="card-title">${receita.titulo}</h2>
+                <div class="card-text">
+                    ${getListaIngredientes(receita.ingredientes)}
+                    <hr>
+                    <div class="preparo">${receita.preparo}</div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+
+        function preencheCatalogo() {
+            const pnlCatalogo = document.getElementById('pnlCatalogo');
+
+            const htmlCatalogo = receitas.map(receita => getCard(receita)).reduce((accumulator, card) => {
+                return accumulator + card;
+            }, "");
+
+            pnlCatalogo.innerHTML = htmlCatalogo;
+        }
+    </script>
+
+</body>
+</html>
